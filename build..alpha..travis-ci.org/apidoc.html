@@ -1,0 +1,694 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/adleroliveira/dreamjs#readme"
+
+    >dreamjs (v0.1.8)</a>
+</h1>
+<h4>A lightweight json data generator.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dreamjs">module dreamjs</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs.cleanse">
+            function <span class="apidocSignatureSpan">dreamjs.</span>cleanse
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs.customType">
+            function <span class="apidocSignatureSpan">dreamjs.</span>customType
+            <span class="apidocSignatureSpan">(typeName, customType)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs.defaultSchema">
+            function <span class="apidocSignatureSpan">dreamjs.</span>defaultSchema
+            <span class="apidocSignatureSpan">(schema)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs.generate">
+            function <span class="apidocSignatureSpan">dreamjs.</span>generate
+            <span class="apidocSignatureSpan">(amount, generateRandomData)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs.generateRnd">
+            function <span class="apidocSignatureSpan">dreamjs.</span>generateRnd
+            <span class="apidocSignatureSpan">(amount)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs.generateSchema">
+            function <span class="apidocSignatureSpan">dreamjs.</span>generateSchema
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs.input">
+            function <span class="apidocSignatureSpan">dreamjs.</span>input
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs.output">
+            function <span class="apidocSignatureSpan">dreamjs.</span>output
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs.schema">
+            function <span class="apidocSignatureSpan">dreamjs.</span>schema
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs.useSchema">
+            function <span class="apidocSignatureSpan">dreamjs.</span>useSchema
+            <span class="apidocSignatureSpan">(schema)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dreamjs.</span>_dreamHelper</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dreamjs.</span>_dreamHelper.chance</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dreamjs._dreamHelper">module dreamjs._dreamHelper</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs._dreamHelper.oneOf">
+            function <span class="apidocSignatureSpan">dreamjs._dreamHelper.</span>oneOf
+            <span class="apidocSignatureSpan">(collection)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dreamjs._dreamHelper.</span>chance</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dreamjs._dreamHelper.chance">module dreamjs._dreamHelper.chance</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dreamjs._dreamHelper.chance.random">
+            function <span class="apidocSignatureSpan">dreamjs._dreamHelper.chance.</span>random
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dreamjs._dreamHelper.chance.</span>bimd5</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dreamjs._dreamHelper.chance.</span>mt</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dreamjs" id="apidoc.module.dreamjs">module dreamjs</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs.cleanse" id="apidoc.element.dreamjs.cleanse">
+        function <span class="apidocSignatureSpan">dreamjs.</span>cleanse
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">cleanse = function () {
+  self._output = null;
+  self._selectedSchema = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+self._selectedSchema = null;
+  };
+
+  self.output = function output(callback) {
+var output;
+
+output = self._output || generateOutput();
+self.<span class="apidocCodeKeywordSpan">cleanse</span>();
+
+if (typeof (callback) === &#x27;function&#x27;) {
+  callback(null, output);
+  return self;
+} else {
+  return output;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs.customType" id="apidoc.element.dreamjs.customType">
+        function <span class="apidocSignatureSpan">dreamjs.</span>customType
+        <span class="apidocSignatureSpan">(typeName, customType)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">customType = function (typeName, customType) {
+  var newCustomType = {};
+  var validTypeName;
+
+  validTypeName = typeof (typeName) === &#x27;string&#x27; ? typeName : &#x27;generic&#x27;;
+
+  if (customType.constructor === RegExp) {
+    newCustomType = {
+      name: validTypeName,
+      customType: function() {
+        return new RandExp(customType).gen();
+      }
+    };
+  } else if (typeof (customType) === &#x27;function&#x27;) {
+    newCustomType = {
+      name: validTypeName,
+      customType: customType
+    };
+  } else {
+    newCustomType = {
+      name: validTypeName,
+      customType: function() {
+        return &#x27;[Invalid Custom Type]&#x27;;
+      }
+    };
+  }
+
+  addOrReplace(_customTypes, newCustomType);
+
+  return self;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+It is also possible to create your own Custom Types or just just pass a function or a RegularExpression statement to
+use a generic Custom Type.
+
+A full list of all the possible built-in Custom Types provided by chance can be found on their website: http://chancejs.com
+
+```js
+
+dream.<span class="apidocCodeKeywordSpan">customType</span>(&#x27;pi&#x27;, function () {
+return Math.PI;
+});
+
+dream.customType(&#x27;hello&#x27;, /hello+ (world|to you)/);
+
+dream
+.schema({
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs.defaultSchema" id="apidoc.element.dreamjs.defaultSchema">
+        function <span class="apidocSignatureSpan">dreamjs.</span>defaultSchema
+        <span class="apidocSignatureSpan">(schema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">defaultSchema = function (schema) {
+  _genericSchema = validateAndReturnSchema(schema);
+  return self;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs.generate" id="apidoc.element.dreamjs.generate">
+        function <span class="apidocSignatureSpan">dreamjs.</span>generate
+        <span class="apidocSignatureSpan">(amount, generateRandomData)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function generate(amount, generateRandomData) {
+  var outputItem;
+  var iterations = amount || 1;
+  var outputArray = [];
+
+  self._currentRecord = null;
+
+  for (var i = 0; i &#x3c; iterations; i++) {
+    outputItem = generateOutputFromSchema(selectAvailableSchema(), generateRandomData);
+    outputArray.push(outputItem);
+    self._currentRecord = outputItem;
+  }
+
+  self._output = outputArray.length === 1 ? outputArray[0] : outputArray;
+  return self;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```js
+dream.schema(&#x27;User&#x27;, {
+  name: String
+});
+
+var data1 = dream
+  .useSchema(&#x27;User&#x27;)
+  .<span class="apidocCodeKeywordSpan">generate</span>(3)
+  .output();
+
+var data2 = dream
+  .useSchema(&#x27;User&#x27;)
+  .generateRnd(3)
+  .output();
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs.generateRnd" id="apidoc.element.dreamjs.generateRnd">
+        function <span class="apidocSignatureSpan">dreamjs.</span>generateRnd
+        <span class="apidocSignatureSpan">(amount)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function generateRnd(amount) {
+  return self.generate(amount, true);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var data1 = dream
+  .useSchema(&#x27;User&#x27;)
+  .generate(3)
+  .output();
+
+var data2 = dream
+  .useSchema(&#x27;User&#x27;)
+  .<span class="apidocCodeKeywordSpan">generateRnd</span>(3)
+  .output();
+```
+
+The variable **data1** and **data2** now contains:
+```js
+// data1
+[ { name: &#x27;&#x27; }, { name: &#x27;&#x27; }, { name: &#x27;&#x27; } ]
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs.generateSchema" id="apidoc.element.dreamjs.generateSchema">
+        function <span class="apidocSignatureSpan">dreamjs.</span>generateSchema
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateSchema = function () {
+  var describedJson;
+  var schemaName = &#x27;&#x27;;
+  var jsonInput = &#x27;&#x27;;
+  var validatedJsonInput;
+  var guessProperties = false;
+  var newSchema;
+  var args = [];
+
+  Array.prototype.push.apply(args, arguments);
+
+  args.forEach(function(argument) {
+    switch (typeof (argument)) {
+      case &#x27;string&#x27;:
+        schemaName = argument;
+        break;
+      case &#x27;object&#x27;:
+        jsonInput = argument;
+        break;
+      case &#x27;boolean&#x27;:
+        guessProperties = argument;
+        break;
+    }
+  });
+
+  validatedJsonInput = _.first(_.flatten([jsonInput]));
+  describedJson = djson.describe(validatedJsonInput || {});
+
+  newSchema = {
+    name: schemaName || &#x27;generic&#x27;,
+    schema: describedJson
+  };
+
+  if (guessProperties === true) {
+    newSchema.schema = guessCustomTypes(describedJson);
+  }
+  addOrReplace(_schemas, newSchema);
+  return self;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs.input" id="apidoc.element.dreamjs.input">
+        function <span class="apidocSignatureSpan">dreamjs.</span>input
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function input(value) {
+  self._dreamHelper.input = value;
+  return (self);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```js
+dream.customType(&#x27;customTypeWithInput&#x27;, function (helper) {
+return helper.input.value;
+});
+
+dream
+.<span class="apidocCodeKeywordSpan">input</span>({value: &#x27;Provided by an input&#x27;})
+.schema({
+  result: &#x27;customTypeWithInput&#x27;
+})
+.generateRnd()
+.output(function (err, result) {
+  console.log(result);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs.output" id="apidoc.element.dreamjs.output">
+        function <span class="apidocSignatureSpan">dreamjs.</span>output
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function output(callback) {
+  var output;
+
+  output = self._output || generateOutput();
+  self.cleanse();
+
+  if (typeof (callback) === &#x27;function&#x27;) {
+    callback(null, output);
+    return self;
+  } else {
+    return output;
+  }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Usage
+
+### Hello World
+
+```js
+var dream = require(&#x27;dreamjs&#x27;);
+
+var helloworld = dream.<span class="apidocCodeKeywordSpan">output</span>();
+```
+
+The variable helloworld now contains:
+```js
+{ Dream: &#x27;Hello World&#x27; }
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs.schema" id="apidoc.element.dreamjs.schema">
+        function <span class="apidocSignatureSpan">dreamjs.</span>schema
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function schema(value) {
+  var validatedSchema;
+  var newSchema;
+  var args = [];
+
+  Array.prototype.push.apply(args, arguments);
+
+  if (args.length &#x3e; 1) {
+    newSchema = {
+      name: typeof (args[0]) === &#x27;string&#x27; ? args.shift() : &#x27;generic&#x27;,
+      schema: typeof (args[0]) === &#x27;object&#x27; ? args.shift() : {}
+    };
+  } else {
+    newSchema = value;
+  }
+
+  validatedSchema = validateAndReturnSchema(newSchema);
+
+  if (validatedSchema.name === &#x27;generic&#x27;) {
+    self._selectedSchema = validatedSchema;
+  } else {
+
+    addOrReplace(_schemas, validatedSchema);
+
+    if (_schemas.length === 1) {
+      self._selectedSchema = validatedSchema;
+    }
+  }
+
+  return self;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Generic Schema / Named Schema
+
+The simplest way to use DreamJS is by defining a generic schema.
+If any other generic Schema is created after that it will replace the previous one.
+
+```js
+var data = dream
+  .<span class="apidocCodeKeywordSpan">schema</span>({
+    name: String
+  })
+  .output();
+```
+
+The variable data now contains:
+```js
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs.useSchema" id="apidoc.element.dreamjs.useSchema">
+        function <span class="apidocSignatureSpan">dreamjs.</span>useSchema
+        <span class="apidocSignatureSpan">(schema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function useSchema(schema) {
+  var schemaToUse;
+  var dreamInstance;
+
+  schemaToUse = validateAndReturnSchema(schema);
+  dreamInstance = new Dream();
+  dreamInstance.schema(schemaToUse);
+  dreamInstance._selectedSchema = schemaToUse;
+
+  return dreamInstance;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+dream.schema(&#x27;Location&#x27;, {
+  address: String,
+  postcode: Number
+});
+
+var data = dream
+  .<span class="apidocCodeKeywordSpan">useSchema</span>(&#x27;Location&#x27;)
+  .output();
+```
+
+The variable data now contains:
+```js
+{ address: &#x27;&#x27;, postcode: 0 }
+```
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dreamjs._dreamHelper" id="apidoc.module.dreamjs._dreamHelper">module dreamjs._dreamHelper</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs._dreamHelper.oneOf" id="apidoc.element.dreamjs._dreamHelper.oneOf">
+        function <span class="apidocSignatureSpan">dreamjs._dreamHelper.</span>oneOf
+        <span class="apidocSignatureSpan">(collection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">oneOf = function (collection) {
+  return _.sample(collection);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+A method that allows you to pick a single random value from a provided array. This way you can explicitly specify the
+scope of what is being returned from your Custom Type.
+
+```js
+dream.customType(&#x27;iceCreamTruckDay&#x27;, function (helper) {
+var businessDays = [&#x27;Monday&#x27;, &#x27;Wednesday&#x27;, &#x27;Friday&#x27;];
+return helper.<span class="apidocCodeKeywordSpan">oneOf</span>(businessDays);
+});
+
+dream
+.schema({
+  iceCreamDay: &#x27;iceCreamTruckDay&#x27;
+})
+.generateRnd(2)
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dreamjs._dreamHelper.chance" id="apidoc.module.dreamjs._dreamHelper.chance">module dreamjs._dreamHelper.chance</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dreamjs._dreamHelper.chance.random" id="apidoc.element.dreamjs._dreamHelper.chance.random">
+        function <span class="apidocSignatureSpan">dreamjs._dreamHelper.chance.</span>random
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">random = function () {
+    return this.mt.random(this.seed);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
