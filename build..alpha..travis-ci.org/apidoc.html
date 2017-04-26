@@ -286,21 +286,22 @@ if (typeof (callback) === &#x27;function&#x27;) {
   return self;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-It is also possible to create your own Custom Types or just just pass a function or a RegularExpression statement to
-use a generic Custom Type.
+    function stringHandle() {
+var value;
+customTypeNeedle = _.find(_customTypes, { name: propertyType });
+customTypeIndex = _.indexOf(_customTypes, customTypeNeedle);
 
-A full list of all the possible built-in Custom Types provided by chance can be found on their website: http://chancejs.com
-
-```js
-
-dream.<span class="apidocCodeKeywordSpan">customType</span>(&#x27;pi&#x27;, function () {
-return Math.PI;
-});
-
-dream.customType(&#x27;hello&#x27;, /hello+ (world|to you)/);
-
-dream
-.schema({
+if (customTypeIndex &#x3e;= 0) {
+  self._dreamHelper.previousItem = self._currentRecord;
+  temporaryValue = customTypeNeedle.<span class="apidocCodeKeywordSpan">customType</span>(self._dreamHelper);
+} else {
+  if (propertyType === &#x27;array&#x27;) {
+    temporaryValue = [];
+  } else {
+    temporaryValue = (typeof (chance[propertyType]) === &#x27;function&#x27;) ? chance[propertyType]() : &#x27;[Unknown Custom Type
+]&#x27;;
+  }
+}
 ...</pre></li>
     </ul>
 
@@ -346,21 +347,18 @@ dream
   return self;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-```js
-dream.schema(&#x27;User&#x27;, {
-  name: String
-});
+	schema = value;
+})
 
-var data1 = dream
-  .useSchema(&#x27;User&#x27;)
-  .<span class="apidocCodeKeywordSpan">generate</span>(3)
-  .output();
 
-var data2 = dream
-  .useSchema(&#x27;User&#x27;)
-  .generateRnd(3)
-  .output();
-```
+if (genRand) {
+	output = dream.useSchema(schema).generateRnd(reps).output();
+} else {
+	output = dream.useSchema(schema).<span class="apidocCodeKeywordSpan">generate</span>(reps).output();
+}
+
+
+console.log(JSON.stringify(output, null, 4));
 ...</pre></li>
     </ul>
 
@@ -377,21 +375,20 @@ var data2 = dream
   return self.generate(amount, true);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var data1 = dream
-  .useSchema(&#x27;User&#x27;)
-  .generate(3)
-  .output();
+	}
 
-var data2 = dream
-  .useSchema(&#x27;User&#x27;)
-  .<span class="apidocCodeKeywordSpan">generateRnd</span>(3)
-  .output();
-```
+	schema = value;
+})
 
-The variable **data1** and **data2** now contains:
-```js
-// data1
-[ { name: &#x27;&#x27; }, { name: &#x27;&#x27; }, { name: &#x27;&#x27; } ]
+
+if (genRand) {
+	output = dream.useSchema(schema).<span class="apidocCodeKeywordSpan">generateRnd</span>(reps).output();
+} else {
+	output = dream.useSchema(schema).generate(reps).output();
+}
+
+
+console.log(JSON.stringify(output, null, 4));
 ...</pre></li>
     </ul>
 
@@ -443,7 +440,23 @@ The variable **data1** and **data2** now contains:
   addOrReplace(_schemas, newSchema);
   return self;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}, {
+  name: &#x27;John Doe&#x27;,
+  age: 58,
+  hobbies: [&#x27;swiming&#x27;, &#x27;hiking&#x27;, &#x27;gaming&#x27;]
+}
+];
+
+dream.<span class="apidocCodeKeywordSpan">generateSchema</span>(&#x27;Person&#x27;, objInfo);
+
+describe(&#x27;Dream&#x27;, function () {
+describe(&#x27;generated schema&#x27;, function () {
+  it(&#x27;should generate a schema based on a object with values&#x27;, function () {
+    expect(dream.useSchema(&#x27;Person&#x27;).generateRnd().output().name).to.be.a(&#x27;string&#x27;);
+    expect(dream.useSchema(&#x27;Person&#x27;).generateRnd().output().age).to.be.a(&#x27;number&#x27;);
+    expect(dream.useSchema(&#x27;Person&#x27;).generateRnd().output().hobbies).to.be.a(&#x27;array&#x27;);
+...</pre></li>
     </ul>
 
 
@@ -460,21 +473,21 @@ The variable **data1** and **data2** now contains:
   return (self);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-
-```js
-dream.customType(&#x27;customTypeWithInput&#x27;, function (helper) {
+// input
+console.log(&#x22;\n*** Input Helper&#x22;);
+dream.customType(&#x27;customTypeWithInput&#x27;, function(helper){
 return helper.input.value;
 });
 
-dream
-.<span class="apidocCodeKeywordSpan">input</span>({value: &#x27;Provided by an input&#x27;})
+var result8 = dream
+.<span class="apidocCodeKeywordSpan">input</span>({
+  value: &#x27;I am the input value&#x27;
+})
 .schema({
   result: &#x27;customTypeWithInput&#x27;
 })
 .generateRnd()
-.output(function (err, result) {
-  console.log(result);
-});
+.output();
 ...</pre></li>
     </ul>
 
@@ -502,20 +515,20 @@ dream
 
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-## Usage
+	}
 
-### Hello World
+	schema = value;
+})
 
-```js
-var dream = require(&#x27;dreamjs&#x27;);
 
-var helloworld = dream.<span class="apidocCodeKeywordSpan">output</span>();
-```
+if (genRand) {
+	output = dream.useSchema(schema).generateRnd(reps).<span class="apidocCodeKeywordSpan">output</span>();
+} else {
+	output = dream.useSchema(schema).generate(reps).output();
+}
 
-The variable helloworld now contains:
-```js
-{ Dream: &#x27;Hello World&#x27; }
-```
+
+console.log(JSON.stringify(output, null, 4));
 ...</pre></li>
     </ul>
 
@@ -560,21 +573,21 @@ The variable helloworld now contains:
   return self;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-### Generic Schema / Named Schema
 
-The simplest way to use DreamJS is by defining a generic schema.
-If any other generic Schema is created after that it will replace the previous one.
+self.useSchema = function useSchema(schema) {
+  var schemaToUse;
+  var dreamInstance;
 
-```js
-var data = dream
-  .<span class="apidocCodeKeywordSpan">schema</span>({
-    name: String
-  })
-  .output();
-```
+  schemaToUse = validateAndReturnSchema(schema);
+  dreamInstance = new Dream();
+  dreamInstance.<span class="apidocCodeKeywordSpan">schema</span>(schemaToUse);
+  dreamInstance._selectedSchema = schemaToUse;
 
-The variable data now contains:
-```js
+  return dreamInstance;
+};
+
+self.input = function input(value) {
+  self._dreamHelper.input = value;
 ...</pre></li>
     </ul>
 
@@ -599,21 +612,20 @@ The variable data now contains:
   return dreamInstance;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
+	}
 
-dream.schema(&#x27;Location&#x27;, {
-  address: String,
-  postcode: Number
-});
+	schema = value;
+})
 
-var data = dream
-  .<span class="apidocCodeKeywordSpan">useSchema</span>(&#x27;Location&#x27;)
-  .output();
-```
 
-The variable data now contains:
-```js
-{ address: &#x27;&#x27;, postcode: 0 }
-```
+if (genRand) {
+	output = dream.<span class="apidocCodeKeywordSpan">useSchema</span>(schema).generateRnd(reps).output();
+} else {
+	output = dream.useSchema(schema).generate(reps).output();
+}
+
+
+console.log(JSON.stringify(output, null, 4));
 ...</pre></li>
     </ul>
 
@@ -639,21 +651,21 @@ The variable data now contains:
   return _.sample(collection);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
+.output();
+console.log(result8);
 
-A method that allows you to pick a single random value from a provided array. This way you can explicitly specify the
-scope of what is being returned from your Custom Type.
-
-```js
-dream.customType(&#x27;iceCreamTruckDay&#x27;, function (helper) {
+// oneOf()
+console.log(&#x22;\n*** oneOf helper&#x22;);
+dream.customType(&#x27;iceCreamTruckDay&#x27;, function(helper){
 var businessDays = [&#x27;Monday&#x27;, &#x27;Wednesday&#x27;, &#x27;Friday&#x27;];
 return helper.<span class="apidocCodeKeywordSpan">oneOf</span>(businessDays);
 });
 
+var result9 =
 dream
 .schema({
   iceCreamDay: &#x27;iceCreamTruckDay&#x27;
 })
-.generateRnd(2)
 ...</pre></li>
     </ul>
 
